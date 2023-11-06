@@ -27,6 +27,7 @@ jobs:
           sort_field: "published"
           sort_mode: "desc"
   pub-dashboard-job2:
+    needs: pub-dashboard-job1
     runs-on: ubuntu-latest
     name: pub-dashboard
     steps:
