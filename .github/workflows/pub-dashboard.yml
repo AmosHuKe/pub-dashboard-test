@@ -3,6 +3,8 @@ name: pub-dashboard
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - '.github/workflows/pub-dashboard.yml'
   pull_request:
     branches: [ "main" ]
 
