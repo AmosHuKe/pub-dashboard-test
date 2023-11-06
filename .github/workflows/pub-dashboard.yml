@@ -24,8 +24,8 @@ jobs:
           filename: "test/Example.md"
           publisher_list: "fluttercandies.com"
           package_list: "extended_image,wechat_assets_picker,flutter_tilt"
-          sort_field: "published"
-          sort_mode: "desc"
+          sort_field: "name"
+          sort_mode: "asc"
   pub-dashboard-job2:
     runs-on: ubuntu-latest
     name: pub-dashboard
