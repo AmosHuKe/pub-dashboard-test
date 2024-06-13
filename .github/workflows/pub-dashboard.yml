@@ -20,7 +20,7 @@ jobs:
         uses: AmosHuKe/pub-dashboard@v1
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          github_repo: "https://github.com/AmosHuKe/test"
+          github_repo: "https://github.com/AmosHuKe/pub-dashboard-test"
           commit_message: "test1"
           filename: "test/Example.md"
           publisher_list: "fluttercandies.com"
@@ -36,7 +36,7 @@ jobs:
         uses: AmosHuKe/pub-dashboard@main
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          github_repo: "https://github.com/AmosHuKe/test"
+          github_repo: "https://github.com/AmosHuKe/pub-dashboard-test"
           commit_message: "test2"
           filename: "test/Example.md"
           publisher_list: "fluttercandies.com"
