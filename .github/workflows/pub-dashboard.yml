@@ -12,34 +12,30 @@ on:
   workflow_dispatch:
 
 jobs:
-  pub-dashboard-job1:
+  pub-dashboard-job:
+    strategy:
+      max-parallel: 1
+      matrix:
+        include:
+          - filename: 'test/Example.md'
+            sort_field: 'name'
+            sort_mode: 'desc'
+            commit_message: 'test1'
+          - filename: 'test/Example.md'
+            sort_field: 'published'
+            sort_mode: 'asc'
+            commit_message: 'test2'
     runs-on: ubuntu-latest
-    name: pub-dashboard1
+    name: 'pub-dashboard :: ${{ matrix.filename }} :: ${{ matrix.sort_field }} :: ${{ matrix.sort_mode }}'
     steps:
       - name: run pub-dashboard
         uses: AmosHuKe/pub-dashboard@v1
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           github_repo: "https://github.com/AmosHuKe/pub-dashboard-test"
-          commit_message: "test1"
-          filename: "test/Example.md"
+          commit_message: ${{ matrix.commit_message }}
+          filename: ${{ matrix.filename }}
           publisher_list: "fluttercandies.com"
           package_list: "extended_image,wechat_assets_picker,flutter_tilt"
-          sort_field: "name"
-          sort_mode: "desc"
-  pub-dashboard-job2:
-    needs: pub-dashboard-job1
-    runs-on: ubuntu-latest
-    name: pub-dashboard2
-    steps:
-      - name: run pub-dashboard
-        uses: AmosHuKe/pub-dashboard@main
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          github_repo: "https://github.com/AmosHuKe/pub-dashboard-test"
-          commit_message: "test2"
-          filename: "test/Example.md"
-          publisher_list: "fluttercandies.com"
-          package_list: "extended_image,wechat_assets_picker,flutter_tilt"
-          sort_field: "published"
-          sort_mode: "asc"
+          sort_field: ${{ matrix.sort_field }}
+          sort_mode: ${{ matrix.sort_mode }}
